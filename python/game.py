@@ -11,9 +11,8 @@ class Player:
         self.in_penalty_box = False
 
     def move(self, roll):
-        self.position += roll
-        if self.position > BOARD_SIZE - 1:
-            self.position -= BOARD_SIZE
+        # Corrección: Uso del operador módulo (%) para garantizar el flujo circular exacto del tablero (0-11)
+        self.position = (self.position + roll) % BOARD_SIZE
 
     def add_coin(self):
         self.coins += 1
